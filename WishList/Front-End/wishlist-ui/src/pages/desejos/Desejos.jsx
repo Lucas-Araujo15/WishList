@@ -25,12 +25,34 @@ class DesejosCadastro extends Component {
   }
 }
 
+class DesejoListagem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listaDesejos: []
+    }
+  }
+
+  buscarDesejos = (event) => {
+    event.preventDefault();
+
+    fetch('http://localhost:5000/desejos')
+
+      .then(resposta => resposta.json())
+
+      .then(desejos => this.setState({ listaDesejos: desejos }))
+
+      .catch(erro => console.log(erro))
+  }
+}
+
 function Desejos() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>Página da lista de desejos</h1>
-        <DesejosCadastro />
+        <button onClick={<DesejoListagem />}></button>
+        <button onClick={<DesejosCadastro />}></button>
       </header>
     </div>
   );
