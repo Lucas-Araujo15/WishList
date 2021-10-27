@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+*{
+    padding:0;
+    margin:0;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    background-color: #190B3E;
+    overflow-x: hidden;
+}
+
+html{
+    height: 100%;
+}
+
+.abas{
+    background: linear-gradient(180deg, #341160 0%, #371456 44.32%, #361359 46.88%, #511C5F 62.82%, #591F62 70.88%, #BA3E85 82.29%, #EB4D97 85.82%, #F6E5A2 97.92%);
+    width: 545px;
+    height: 48.8vw;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navegacao{
+    display: flex;
+}
+
+.box-content{
+    margin-left: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    Width: 235px;
+    margin-top: 30px;
+}
+
+.abas button{
+    background: #190B3E;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    height: 100px;
+    width: 408px;
+    font-family: Rock Salt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.container-abas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.container-abas div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 600px;
+}
+
+.painel{
+    height: 410px;
+    width: 605px;
+}
+
+.box-content h1{
+    font-family: Rock Salt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    color: #ffffff;
+}
+
+.box-content{
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 48.8vw;
+    width: 100%;
+
+}
+
+.box-content img{
+    width: 700px;
+}
+
+.box-content div{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-content form{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-content button{
+    background: #FFE500;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    font-family: Rock Salt;
+    color: #ffffff;
+    height: 85px;
+    width: 234px;
+}
+
+.input1{
+    height: 75px;
+    width: 498px;
+    
+
+}
+
+.input1, .input2{
+    border-radius: 10px;
+    font-family: Rockwell;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    text-transform: uppercase;
+    padding: 10px
+}
+
+.input2{
+    height: 203px;
+    width: 498px;
+}
+
+.box-content h2{
+    font-family: Rockwell;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.listas{
+    display: none;
+    background-color: blueviolet;
+    height: 900px;
+}
+
