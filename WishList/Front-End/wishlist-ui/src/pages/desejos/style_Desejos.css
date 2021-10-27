@@ -45,8 +45,7 @@ html{
 }
 
 .abas button{
-    background: #190B3E;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    background: #EC6398;
     border-radius: 10px;
     height: 100px;
     width: 408px;
@@ -55,6 +54,10 @@ html{
     font-weight: normal;
     font-size: 40px;
     color: #ffffff;
+    box-shadow: 0 0 50px 50px #190B3E inset, 0 0 0 0 #190B3E;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
 }
 
 .container-abas{
@@ -71,6 +74,10 @@ html{
     justify-content: space-between;
     align-items: center;
     height: 600px;
+}
+
+.container-abas button:hover{
+    box-shadow: 0 0 10px 0 #190B3E inset, 0 0 10px 4px #190B3E;
 }
 
 .painel{
