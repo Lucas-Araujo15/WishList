@@ -19,6 +19,7 @@ GO
 CREATE TABLE Desejo(
 IdDesejo INT PRIMARY KEY IDENTITY (1,1),
 IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario),
+produto VARCHAR(50) NOT NULL,
 descricao VARCHAR (100) NOT NULL
 );
 GO
