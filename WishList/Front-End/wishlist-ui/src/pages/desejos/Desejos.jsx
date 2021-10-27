@@ -11,7 +11,8 @@ class Desejos extends Component {
       idUsuario: 0,
       descricaoDesejo: '',
       listaDesejos: [],
-      pagina: false
+      pagina: false,
+      qntDesejos: 5
     }
   };
 
@@ -27,6 +28,12 @@ class Desejos extends Component {
       headers: {
         "Content-Type": "application/json"
       }
+    })
+  }
+
+  quantidadeReposAdd = () => {
+    this.setState({
+      qntDesejos: this.state.qntDesejos + 5
     })
   }
 
@@ -62,7 +69,7 @@ class Desejos extends Component {
             <img className="painel" src={imagemPainel} alt="" />
           </div>
         </aside>
-        <div style={this.state.pagina === false? {display:''} : {display: 'none'}} className="box-content">
+        <div style={this.state.pagina === false ? { display: '' } : { display: 'none' }} className="box-content">
           <h1>Informe seus desejos e veja acontecer!</h1>
           <div>
             <form action="">
@@ -74,8 +81,32 @@ class Desejos extends Component {
             <img src={genio} alt="" />
           </div>
         </div >
-        <div style={this.state.pagina === false ? {display:'none'} : {display: ''}} className="listas">
-          <p>sfrghçsioderufbghçiozsdfgvçodsfghçiou</p>
+        <div style={this.state.pagina === false ? { display: 'none' } : { display: '' }} className="listas">
+          <div>
+            <h2>Lista de desejos</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th style={{ width: '210px' }}>Sonhador</th>
+                  <th>Sonho</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  this.state.listaDesejos.slice(0, this.state.qntDesejos).map((desejo) => {
+                    return (
+                      <tr key={desejo.idDesejo}>
+                        <td>{desejo.nomeUsuario}</td>
+                        <td>{desejo.descricao}</td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+            <button onClick={this.quantidadeReposAdd} style={this.state.listaDesejos.length >= 5 ? { display: '' } : { display: 'none' }}>Ver mais</button>
+          </div>
+
         </div>
       </div>
     );
