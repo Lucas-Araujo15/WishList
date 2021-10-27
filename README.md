@@ -21,7 +21,7 @@ Antes de executar o sistema, é necessário criar o banco de dados em seu comput
 ### 3º Etapa: Instalação do Runtime do .NET 5.0
 Com isso, é necessário também instalar o runtime do .NET 5.0 para rodar a aplicação. O link para a instalação está disponível em https://dotnet.microsoft.com/download 
 
-### 4º Etapa: Instação da node_modules
+### 4º Etapa: Instalação da node_modules
 Para executar o front-end da aplicação, primeiramente precisa-se instalar a pasta node_modules. Para isso, já na pasta **WishList**, navegue até a pasta **Front-end** e abra a pasta **wishlist-ui**. Para realizar a instalação, digite no diretório **cmd** e aperte enter. Com o cmd aberto, execute o comando `npm install`, ou se preferir, digite o comando `code .`para abrir a pasta no Microsoft Visual Studio Code. Dentro do editor, com o atalho **Ctrl + '** será aberto um terminal e você poderá também executar o mesmo comando de instalação.
 
 ### 5º Etapa: Adequando o sistema a máquina local 
