@@ -8,7 +8,8 @@ class Desejos extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      idUsuario: 0,
+      idUsuario: '',
+      produto: '',
       descricaoDesejo: '',
       listaDesejos: [],
       pagina: false,
@@ -16,11 +17,19 @@ class Desejos extends Component {
     }
   };
 
-  cadastrar = () => {
+  componentDidMount = () => {
+    this.buscarDesejos()
+    this.limparCampos()
+  }
 
-    fetch('http://localhost:5000/desejos', {
+  cadastrar = (event) => {
+
+    event.preventDefault();
+
+    fetch('http://localhost:5000/api/desejos', {
       method: 'POST',
       body: JSON.stringify({
+        produto: this.state.produto,
         idUsuario: this.state.idUsuario,
         descricao: this.state.descricaoDesejo
       }),
@@ -29,6 +38,8 @@ class Desejos extends Component {
         "Content-Type": "application/json"
       }
     })
+
+    this.buscarDesejos()
   }
 
   quantidadeReposAdd = () => {
@@ -37,24 +48,52 @@ class Desejos extends Component {
     })
   }
 
-  buscarDesejos = (event) => {
-    event.preventDefault();
+  buscarDesejos = () => {
 
-    fetch('http://localhost:5000/desejos')
+    fetch('http://localhost:5000/api/desejos')
 
       .then(resposta => resposta.json())
 
       .then(desejos => this.setState({ listaDesejos: desejos }))
 
+      .then(this.limparCampos)
+
       .catch(erro => console.log(erro))
   }
 
   abrirPagina = () => {
+    this.buscarDesejos()
     this.setState({
       pagina: !this.state.pagina
     })
     console.log(this.state.pagina)
   }
+
+  atualizaEstadoUsuario = async (event) => {
+    await this.setState({
+      idUsuario: event.target.value
+    })
+  }
+
+  atualizaEstadoProduto = async (event) => {
+    await this.setState({
+      produto: event.target.value
+    })
+  }
+
+  atualizaEstadoDescricao = async (event) => {
+    await this.setState({
+      descricaoDesejo: event.target.value
+    })
+  }
+
+  limparCampos = () => {
+    this.setState({
+        idUsuario: '',
+        produto: '',
+        descricaoDesejo: ''
+    })
+}
 
   render() {
     return (
@@ -72,11 +111,25 @@ class Desejos extends Component {
         <div style={this.state.pagina === false ? { display: '' } : { display: 'none' }} className="box-content">
           <h1>Informe seus desejos e veja acontecer!</h1>
           <div>
-            <form action="">
+            <form onSubmit={this.cadastrar}>
               <h2>Diga-me, o que deseja?</h2>
-              <input className="input1" placeholder="quem deseja?" type="text" />
-              <textarea className="input2" placeholder="o desejo é..." name="" id="" cols="30" rows="10"></textarea>
-              <button>Cadastrar</button>
+              <input className="input1" type="text"
+                value={this.state.idUsuario}
+                placeholder="quem deseja?"
+                onChange={this.atualizaEstadoUsuario}
+              />
+              <input className="input1" type="text"
+                value={this.state.produto}
+                placeholder="Qual desejo?"
+                onChange={this.atualizaEstadoProduto}
+              />
+              <textarea className="input2" name="" id="" cols="30" rows="10"
+                value={this.state.descricaoDesejo}
+                placeholder="Sobre o que é o desejo?"
+                onChange={this.atualizaEstadoDescricao}
+              ></textarea>
+
+              <button type="submit" >Cadastrar</button>
             </form>
             <img src={genio} alt="" />
           </div>
@@ -89,6 +142,7 @@ class Desejos extends Component {
                 <tr>
                   <th style={{ width: '210px' }}>Sonhador</th>
                   <th>Sonho</th>
+                  <th>Descrição</th>
                 </tr>
               </thead>
               <tbody>
@@ -96,7 +150,8 @@ class Desejos extends Component {
                   this.state.listaDesejos.slice(0, this.state.qntDesejos).map((desejo) => {
                     return (
                       <tr key={desejo.idDesejo}>
-                        <td>{desejo.nomeUsuario}</td>
+                        <td>{desejo.idUsuarioNavigation.nomeUsuario}</td>
+                        <td>{desejo.produto}</td>
                         <td>{desejo.descricao}</td>
                       </tr>
                     )
